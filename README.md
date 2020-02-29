@@ -157,14 +157,28 @@ The static initializer invokes `System.loadLibrary()` to load the native library
 
 Starting from JDK 8, you should use "javac -h" to compile the Java program AND generate C/C++ header file called `com_webrtc_audioprocessing_Apm.h` as follows:
 
-> javac -h . Apm.java
+```
+javac -h . Apm.java
+```
 
 The "-h dir" option generates C/C++ header and places it in the directory specified (in the above example, '.' for the current directory).
 
 Before JDK 8, you need to compile the Java program using javac and generate C/C++ header using a dedicated javah utility, as follows. The javah utility is no longer available in JDK 10.
 
-> javac Apm.java
-> javah ApmJNI 
+```
+javac Apm.java
+javah ApmJNI 
+```
+
+Now place this header file (`com_webrtc_audioprocessing_Apm.h`) inside the following i.e. `src/main/jni/`
+
+
+5. WebRTC JNI Apm
+
+By using those generated library files and header files I have written JNI based C functions to **preprocess and postprocess** the audio data. These JNI files prefixed with `com_webrtc_audioprocessing_Apm` which is the java package path of the JNI wrappers.
+
+![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/jni_files.png)
+
 
  
 
