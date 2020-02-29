@@ -291,13 +291,44 @@ Here is the workaround of the `ndk-build` command:
 ![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/ndk_build.gif)
 
 
+This command will generates shared library files inside `app/src/main/libs` and `app/src/main/obj` directories. The shared library name defined in the make file with `LOCAL_MODULE := libwebrtc_apms`
+
+![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/libs.png)
 
 
+Now everything is ready for *WebRTC APM Module* to pre-process and post-process audio data.
+
+ 1. Push input PCM data into `ProcessCaptureStream` to process in place.
+ 2. Get the processed PCM data from `ProcessCaptureStream` and send to far-end.
+ 3. The far end pushed the received data into `ProcessRenderStream`.
+
+----
+
+8. Run with gradle
 
 
+Now I have integrated WbeRTC APM with my application. I can run it with gradle(in android studio). To run it with gradle I need to manually define the JNI library directory in build.gradle file
 
 
+```
 
+android {
+
+  --
+  
+  sourceSets {
+    main {
+      jniLibs.srcDir ‘src/main/libs’
+      jni.srcDirs = []
+     }
+  }
+  
+  --
+  
+}
+
+
+```
 
 
 
