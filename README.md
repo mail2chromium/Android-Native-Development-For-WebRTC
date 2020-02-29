@@ -1,4 +1,4 @@
-# "WebRTC Native Stack is considered as close to the Hardware Abstraction Layer (HAL) as possible."
+# "WebRTC Native Stack is considered as a single chain as close to the Hardware Abstraction Layer (HAL) as possible."
 
 
 **Getting Started**
@@ -8,7 +8,7 @@ This repository involves a **Step by Step Guide to Build Android App based on We
 ------
 # NDK:
 
-[Native Development kit](https://developer.android.com/ndk/guides) includes the following features such as;
+[NDK (Native Development kit)](https://developer.android.com/ndk/guides) includes the following features such as;
 
 - Tool and build files needed to generate a native code base from `C/C++`.
 - Embed consistent native libraries in application packages files (.apk files) that can be deployed on Android devices.
@@ -35,7 +35,7 @@ Drawback: There is one of the major side effect of JNI is, *The Program is no lo
 
  In fact, Java and C/C++ are static type languages, the main reason that java and C cannot communicate is the problem of data types. JNI plays a role in data conversion. The corresponding relationship is shown in the following table:
  
- ![JNI Types and Data Sturctures](https://github.com/mail2chromium/Android-Audio-Processing-Using-WebRTC/blob/master/Content.png)
+ ![JNI Types and Data Sturctures](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/types.png)
 
  
  
