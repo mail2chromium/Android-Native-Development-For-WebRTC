@@ -91,7 +91,7 @@ Following are the steps that I have followed to integrate WebRTC source code wit
 
 I have a seperated directory called `webrtc` inside the jni directory and added WebRTC source code for it. WebRTC source code can be cloned from [github](https://github.com/JumpingYang001/webrtc.git) or download via official [download page](http://webrtc.github.io/webrtc-org/native-code/development/).
 
-![Android WebRTC Project Structure]()
+![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/structure.png)
 
 
 3. Compile WebRTC Soruce for audio processing
