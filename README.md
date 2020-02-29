@@ -87,7 +87,7 @@ Following are the steps that I have followed to integrate WebRTC source code wit
 
 1. [Creating an Android Project](https://developer.android.com/training/basics/firstapp/creating-project)
 
-2. Importing WebRTC Source to Android Project
+2. Importing WebRTC Source to Android Project:
 
 I have a seperated directory called `webrtc` inside the jni directory and added WebRTC source code for it. WebRTC source code can be cloned from [github](https://github.com/JumpingYang001/webrtc.git) or download via official [download page](http://webrtc.github.io/webrtc-org/native-code/development/).
 
@@ -95,7 +95,12 @@ I have a seperated directory called `webrtc` inside the jni directory and added 
 
 Make sure your project structure follow the same hierarchy as given above.
 
-3. Compile WebRTC Soruce for audio processing
+3. Write a Java class that uses native code of `C/C++`:
+
+I have maintained and updated `Apm.java` in my Android Project as given here;
+
+![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/apm.png)
+
 
 
 
