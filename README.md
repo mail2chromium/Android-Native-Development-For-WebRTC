@@ -55,15 +55,25 @@ To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to c
 
 -----
 
-# WebRTC NDK Development:
+# WebRTC with Android:
+
+WebRTC implementation done in C++. It needs to integrate with android application via Java Native Interface(JNI). WebRTC source available at [Github WebRTC Source Code](https://github.com/JumpingYang001/webrtc.git) as well as official WebRTC [download page](http://webrtc.github.io/webrtc-org/native-code/development/).
 
 Before digging into WebRTC Native Stack, If you don't have a basic understanding of NDK development, 
 I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/android/ndk-samples/tree/master/hello-jni).
 
-First of all, make sure you have installed one of the NDK Package Installed on your machine. Here you can select & download the latest or lagecy NDK package for your development platform i.e. [NDK Download](https://developer.android.com/ndk/downloads).
+Setup Android NDK:
 
+To integrate WebRTC codec via JNI, first I needs setup android NDK. Download NDK from [here](https://developer.android.com/ndk/downloads) and extract it. Main thing to consider here is, make sure NDK path is being setup in environment variables in windows i.e. [see](https://subscription.packtpub.com/book/application_development/9781849691505/1/ch01lvl1sec09/setting-up-an-android-ndk-development-environment-in-windows). 
 
+After downloading and installtion of NDK Package,To test whether ndk-build is working or not, check these commands in the terminal like;
 
+```
+  ndk-stack
+  ndk-build --help
+```
+
+Now we will follow the above given **NDK and JNI Workaround Steps** to develop WebRTC into our android application.
 
 
 
