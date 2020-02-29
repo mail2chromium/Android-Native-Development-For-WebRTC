@@ -31,7 +31,7 @@ such as WebRTC, TarsosDSP, Ffmpeg, OpenCV, and a lot of other machine learning s
 
 [JNI (Java Native Interface)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/index.html) provides several APIs to implement the communication between Java and other languages (mainly `C/C++`). 
 
-Drawback: There is one of the major side effect of JNI is, *The Program is no longer Cross-Platform*. To make your program Cross-Platform, you must recompile the native language part in different system environments. The program is no longer absolutely secure, and *improper* use of native code may cause the entire program to crash. As a general rule, you should focus your local methods on a few classes. This reduces the coupling between JAVA and C.
+Drawback: There is one of the major side effect of JNI is, *The Program is no longer Cross-Platform*. To make your program Cross-Platform, you must recompile the native language part in different system environments. The program is no longer absolutely secure, and *improper* use of native code may cause the entire program to crash. As a general rule, you should focus your local methods on a few classes. This reduces the coupling between `JAVA` and `C`.
 
  In fact, Java and C/C++ are static type languages, the main reason that java and C cannot communicate is the problem of data types. JNI plays a role in data conversion. The corresponding relationship is shown in the following table:
  
@@ -41,17 +41,17 @@ Drawback: There is one of the major side effect of JNI is, *The Program is no lo
 
  # NDK and JNI Workaround:
  
-To put it simply, NDK is an extension toolkit developed by JNI. 
+To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to compile corresponding local [static or shared libraries](https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries) that can be run for different mobile devices (`ARM, x86 ...`). In order to improve the sorting efficiency and use `C/C ++` in android, here are different steps for this process are: 
 
-It uses NDK to compile corresponding local [static or shared libraries](https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries) that can be run for different mobile devices `(ARM, x86 ...)`. In order to improve the sorting efficiency and use `C/C ++` in android, here are different steps for this process are: 
+1. SDK development (write java code, write code containing native keywords to start JNI)([Native Methods](http://journals.ecs.soton.ac.uk/java/tutorial/native/index.html)) 
 
-1. SDK development (write java code, write code containing native keywords to start JNI)([Native Methods](http://journals.ecs.soton.ac.uk/java/tutorial/native/index.html)) --> 
+2. JNI development (according to the JNI coding specification, write a local interaction with java Code, the role is to talk about the `C/C++` data type conversion into Java can recognize)
 
-2. JNI development (according to the JNI coding specification, write a local interaction with java Code, the role is to talk about the `C/C++` data type conversion into Java can recognize) --> 
+3. `C/C++` development (write business logic, or call the local API or library provided by the NDK to complete the development of specific functions)
 
-3. `C/C++` development (write business logic, or call the local API or library provided by the NDK to complete the development of specific functions) --> 
+4. NDK compilation ( Write the .mk file, compile and debug, modify the .mk file, and optimize the compilation results for the specific platform (ARM / X86)
 
-4. NDK compilation ( Write the .mk file, compile and debug, modify the .mk file, and optimize the compilation results for the specific platform (ARM / X86) --> SDK compilation and packaging.
+5. SDK compilation and packaging.
 
 
 
