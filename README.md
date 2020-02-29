@@ -95,6 +95,8 @@ I have a seperated directory called `webrtc` inside the jni directory and added 
 
 Make sure your project structure follow the same hierarchy as given above.
 
+-----
+
 3. Write a Java class that uses native code of `C/C++`:
 
 I have maintained and updated `Apm.java` in my Android Project as given here;
@@ -147,9 +149,24 @@ I have declared the all the native instance method, via keyword native which den
 
 ```
 
-The static initializer invokes System.loadLibrary() to load the native library "webrtc_apms" (which contains all native methods) during the class loading. It will be mapped to "libwebrtc_apms.dll" in Windows; or "libwebrtc_apms.so" in (Unixes/Mac OS X). This library shall be included in **libs** directory automatically after you run this command in terminal i.e. `ndk-build`. The program will throw a UnsatisfiedLinkError if the library cannot be found in runtime.
+The static initializer invokes `System.loadLibrary()` to load the native library "webrtc_apms" (which contains all native methods) during the class loading. It will be mapped to " `libwebrtc_apms.dll` " in Windows; or " `libwebrtc_apms.so` " in (Unix/Mac-OS X). This library shall be included in **libs** directory automatically after you run this command in terminal i.e. `ndk-build`. The program will throw a UnsatisfiedLinkError if the library cannot be found in runtime.
 
+-----
 
+4. Compile the Java Program Apm.java & Generate the C/C++ Header File:
+
+Starting from JDK 8, you should use "javac -h" to compile the Java program AND generate C/C++ header file called `com_webrtc_audioprocessing_Apm.h` as follows:
+
+> javac -h . Apm.java
+
+The "-h dir" option generates C/C++ header and places it in the directory specified (in the above example, '.' for the current directory).
+
+Before JDK 8, you need to compile the Java program using javac and generate C/C++ header using a dedicated javah utility, as follows. The javah utility is no longer available in JDK 10.
+
+> javac Apm.java
+> javah ApmJNI 
+
+ 
 
 
 
