@@ -53,8 +53,14 @@ To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to c
 
 5. SDK compilation and packaging.
 
+-----
 
-Before digging into WebRTC Native Stack, I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/android/ndk-samples/tree/master/hello-jni), if you don't have a basic understanding of NDK development.
+# WebRTC NDK Development:
+
+Before digging into WebRTC Native Stack, If you don't have a basic understanding of NDK development, 
+I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/android/ndk-samples/tree/master/hello-jni).
+
+First of all, make sure you have installed one of the NDK Package Installed on your machine. Here you can select & download the latest or lagecy NDK package for your development platform i.e. [NDK Download](https://developer.android.com/ndk/downloads).
 
 
 
