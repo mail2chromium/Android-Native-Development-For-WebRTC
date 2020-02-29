@@ -93,6 +93,7 @@ I have a seperated directory called `webrtc` inside the jni directory and added 
 
 ![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/structure.png)
 
+Make sure your project structure follow the same hierarchy as given above.
 
 3. Compile WebRTC Soruce for audio processing
 
