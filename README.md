@@ -83,8 +83,19 @@ I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/
 
 # WebRTC with Android:
 
-Now we will follow the above given **NDK and JNI Workaround Steps** to develop WebRTC into our android application.
-Following are the steps that I have followed to integrate WebRTC source code with my android application.
+Following are the steps that I have followed to integrate WebRTC source code with my android application. 
+
+1. [Creating an Android Project](https://developer.android.com/training/basics/firstapp/creating-project)
+
+2. Importing WebRTC Source to Android Project
+
+I have a seperated directory called `webrtc` inside the jni directory and added WebRTC source code for it. WebRTC source code can be cloned from [github](https://github.com/JumpingYang001/webrtc.git) or download via official [download page](http://webrtc.github.io/webrtc-org/native-code/development/).
+
+![Android WebRTC Project Structure]()
+
+
+3. Compile WebRTC Soruce for audio processing
+
 
 
 
