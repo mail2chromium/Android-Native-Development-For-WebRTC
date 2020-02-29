@@ -8,7 +8,7 @@ This repository involves a **Step by Step Guide to Build Android App based on We
 ------
 # NDK:
 
-[NDK (Native Development kit)](https://developer.android.com/ndk/guides) includes the following features such as;
+[NDK (Native Development Kit)](https://developer.android.com/ndk/guides) includes the following features such as;
 
 - Tool and build files needed to generate a native code base from `C/C++`.
 - Embed consistent native libraries in application packages files (.apk files) that can be deployed on Android devices.
@@ -55,7 +55,7 @@ To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to c
 
 -----
 
-# WebRTC with Android:
+# Installation and Configurations
 
 Here we start with;
 
@@ -79,7 +79,12 @@ To test whether ndk-build is working or not, check these commands in the termina
 Before digging into WebRTC Native Stack, If you don't have a basic understanding of NDK development, 
 I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/android/ndk-samples/tree/master/hello-jni).
 
+-----
+
+# WebRTC with Android:
+
 Now we will follow the above given **NDK and JNI Workaround Steps** to develop WebRTC into our android application.
+Following are the steps that I have followed to integrate WebRTC source code with my android application.
 
 
 
