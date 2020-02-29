@@ -101,6 +101,54 @@ I have maintained and updated `Apm.java` in my Android Project as given here;
 
 ![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/apm.png)
 
+I have declared the all the native instance method, via keyword native which denotes that this method is implemented in another language. A native method does not contain a body. These native methods shall be found in the native library loaded. Here are the list of native methods inculded inside the `Apm.java` class;
+
+```
+    // apm constructor
+    private native boolean nativeCreateApmInstance(boolean aecExtendFilter, boolean speechIntelligibilityEnhance, boolean delayAgnostic, boolean beamforming, boolean nextGenerationAec, boolean experimentalNs, boolean experimentalAgc);
+    private native void nativeFreeApmInstance();
+    private native int high_pass_filter_enable(boolean enable);
+    
+    // aec and aecm
+    private native int aec_enable(boolean enable);
+    private native int aec_set_suppression_level(int level); //[0, 1, 2]
+    private native int aec_clock_drift_compensation_enable(boolean enable);
+    private native int aecm_enable(boolean enable);
+    private native int aecm_set_suppression_level(int level); //[0, 1, 2, 3, 4]
+    private native int ns_enable(boolean enable);
+    private native int ns_set_level(int level); // [0, 1, 2, 3]
+    
+    // agc
+    private native int agc_enable(boolean enable);
+    private native int agc_set_target_level_dbfs(int level); //[0,31]
+    private native int agc_set_compression_gain_db(int gain); //[0,90]
+    private native int agc_enable_limiter(boolean enable);
+    private native int agc_set_analog_level_limits(int minimum, int maximum); // limit to [0, 65535]
+    private native int agc_set_mode(int mode); // [0, 1, 2]
+    private native int agc_set_stream_analog_level(int level);
+    private native int agc_stream_analog_level();
+    
+    // vad 
+    private native int vad_enable(boolean enable);
+    private native int vad_set_likelihood(int likelihood);
+    private native boolean vad_stream_has_voice();
+    
+    // Capture and render audio stream
+    private native int ProcessStream(short[] nearEnd, int offset); //Local data// 16K, 16Bits, 10ms
+    private native int ProcessReverseStream(short[] farEnd, int offset); // Remote data // 16K, 16Bits, 10ms
+    private native int set_stream_delay_ms(int delay);
+    
+    // resampling
+    private native boolean SamplingInit(int inFreq, int outFreq, long num_channels);
+    private native int SamplingReset(int inFreq, int outFreq, long num_channels);
+    private native int SamplingResetIfNeeded(int inFreq, int outFreq, long num_channels);
+    private native int SamplingPush(short[] samplesIn, long lengthIn, short[] samplesOut,long maxLen, long outLen);
+    private native boolean SamplingDestroy();
+
+```
+
+The static initializer invokes System.loadLibrary() to load the native library "webrtc_apms" (which contains all native methods) during the class loading. It will be mapped to "libwebrtc_apms.dll" in Windows; or "libwebrtc_apms.so" in (Unixes/Mac OS X). This library shall be included in **libs** directory automatically after you run this command in terminal i.e. `ndk-build`. The program will throw a UnsatisfiedLinkError if the library cannot be found in runtime.
+
 
 
 
