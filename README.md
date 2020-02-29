@@ -43,15 +43,18 @@ Drawback: There is one of the major side effect of JNI is, *The Program is no lo
  
 To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to compile corresponding local [static or shared libraries](https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries) that can be run for different mobile devices (`ARM, x86 ...`). In order to improve the sorting efficiency and use `C/C ++` in android, here are different steps for this process are: 
 
-1. SDK development (write java code, write code containing native keywords to start JNI)([Native Methods](http://journals.ecs.soton.ac.uk/java/tutorial/native/index.html)) 
+1. SDK development (write java code, write code containing native keywords to start JNI)([Native Methods](http://journals.ecs.soton.ac.uk/java/tutorial/native/index.html)) .
 
-2. JNI development (according to the JNI coding specification, write a local interaction with java Code, the role is to talk about the `C/C++` data type conversion into Java can recognize)
+2. JNI development (according to the JNI coding specification, write a local interaction with java Code, the role is to talk about the `C/C++` data type conversion into Java can recognize).
 
-3. `C/C++` development (write business logic, or call the local API or library provided by the NDK to complete the development of specific functions)
+3. `C/C++` development (write business logic, or call the local API or library provided by the NDK to complete the development of specific functions).
 
-4. NDK compilation ( Write the .mk file, compile and debug, modify the .mk file, and optimize the compilation results for the specific platform (ARM / X86)
+4. NDK compilation ( Write the .mk file, compile and debug, modify the .mk file, and optimize the compilation results for the specific platform (`ARM/X86`).
 
 5. SDK compilation and packaging.
+
+
+Before digging into WebRTC Native Stack, I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/android/ndk-samples/tree/master/hello-jni), if you don't have a basic understanding of NDK development.
 
 
 
