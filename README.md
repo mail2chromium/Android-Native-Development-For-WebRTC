@@ -99,11 +99,12 @@ Make sure your project structure follow the same hierarchy as given above.
 
 3. Write a Java class that uses native code of `C/C++`:
 
-I have maintained and updated `Apm.java` in my Android Project as given here;
+To call JNI based C function I need to write JNI wrappers for them. I kept the written wrappers in com_webrtc_audioprocessing_Apm_ package. Read more about JNI from [here](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html).
+Following is the JNI wrapper for WebRTC Audio processing. I have maintained and updated `Apm.java` in my Android Project as given here;
 
 ![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/apm.png)
 
-I have declared the all the native instance method, via keyword native which denotes that this method is implemented in another language. A native method does not contain a body. These native methods shall be found in the native library loaded. Here are the list of native methods inculded inside the `Apm.java` class;
+This file includes the all the native instance method, via keyword native which denotes that this method is implemented in another language. A native method does not contain a body. These native methods shall be found in the native library loaded. Here are the list of native methods inculded inside the `Apm.java` class;
 
 ```
     // apm constructor
@@ -172,6 +173,7 @@ javah ApmJNI
 
 Now place this header file (`com_webrtc_audioprocessing_Apm.h`) inside the following i.e. `src/main/jni/`
 
+-----
 
 5. WebRTC JNI Apm
 
@@ -179,8 +181,115 @@ By using those generated library files and header files I have written JNI based
 
 ![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/jni_files.png)
 
+Here is the JNI based audio processing module which is [android_apm_wrapper.cpp](https://github.com/mail2chromium/Android-Audio-Processing-Using-WebRTC/blob/master/app/src/main/jni/android_apm_wrapper.cpp), you can inspect this cpp-file.
 
+------
+
+6. Android make file
+
+I need to build a native shared library (`.so`) with my JNI C/C++ functions in order to call them from JAVA(with JNI wrapper). To do that I have written android make file `Android.mk`. Since my C/C++ functions using WebRTC library files, I have integrated them with the make file as well.
+Following is the make file to build shared library `Android.mk`;
+
+```
+
+MY_WEBRTC_ROOT_PATH := $(call my-dir)
+
+LOCAL_CFLAGS += -DWEBRTC_POSIX
+
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/aec/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/aecm/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/agc/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/ns/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/utility/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/vad/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/intelligibility/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/transient/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_processing/beamformer/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/common_audio/vad/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/common_audio/signal_processing/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/common_audio/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/common_audio/resampler/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_coding/codecs/isac/main/source/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/modules/audio_coding/codecs/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/system_wrappers/source/Android.mk
+include $(MY_WEBRTC_ROOT_PATH)/base/Android.mk
+
+
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+# Here you can change the name of your shared library
+LOCAL_MODULE := libwebrtc_apms
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_LDLIBS += -llog
+LOCAL_LDLIBS += -landroid
+LOCAL_CFLAGS += -O0
+LOCAL_CPPFLAGS += -std=c++11
+LOCAL_CFLAGS += -DWEBRTC_ANDROID
+
+LOCAL_C_INCLUDES := $(JNI_PATH)
+
+# WebRTC Apm JNI Wrapper inculde C++ Functions and their body
+LOCAL_SRC_FILES := $(JNI_PATH)/android_apm_wrapper.cpp
+
+# Here, I basically loaded all the static libraries for different modules i.e. aec, aecm, agc, vad, ns
+LOCAL_WHOLE_STATIC_LIBRARIES := libwebrtc_aec \
+                                libwebrtc_aecm \
+                                libwebrtc_agc \
+                                libwebrtc_ns \
+                                libwebrtc_utility \
+                                libwebrtc_vad \
+                                libwebrtc_apm \
+                                libwebrtc_common_audio_vad \
+                                libwebrtc_spl \
+                                libwebrtc_codecs_isac \
+                                libwebrtc_common_audio \
+                                libwebrtc_common_audio_resampler \
+                                libwebrtc_system_wrapper \
+                                libwebrtc_base \
+                                libwebrtc_intelligibility \
+                                libwebrtc_transient \
+                                libwebrtc_beamformer \
+                                libwebrtc_codecs
+
+LOCAL_PRELINK_MODULE := false
+
+include $(BUILD_SHARED_LIBRARY)
+
+
+```
+
+----
+
+7. Build the shared library via android NDK
+
+Now I can build the shared library via android NDK. To build the shared library, follow these steps;
+
+- Go to the directory of your Apm wrapper such as 
+
+```
+
+ path/src/main/jni/android_apm_wrapper.cpp
  
+```
+
+- Open the command prompt or terminal and build ndk by this command;
+
+```
+
+ndk-build
+
+```
+
+Here is the workaround of the `ndk-build` command:
+
+
+![Android WebRTC Project Structure](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC/blob/master/ndk_build.gif)
+
 
 
 
