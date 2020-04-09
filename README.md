@@ -17,7 +17,7 @@ For *real-time Communication and AudioProcessing* in Android, I will recommend y
 - [NDK (Native Development Kit)](#ndk)
 - [Why NDK?](#why-ndk)
 - [What is JNI?](#what-is-JNI)
-- [NDK and JNI Workaround:](#ndk-and-JNI-Workaround)
+- [NDK and JNI Workaround](#ndk-and-JNI-Workaround)
 - [Installation and Configurations](#installation-and-configurations)
 - [WebRTC with Android](#webRTC-with-Android)
   - [Creating an Android Project](#creating-an-Android-Project)
