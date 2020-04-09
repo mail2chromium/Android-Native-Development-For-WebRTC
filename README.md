@@ -26,7 +26,7 @@ For *real-time Communication and AudioProcessing* in Android, I will recommend y
   - [Compile the Java Program Apm.java & Generate the C/C++ Header File](#compile-the-Java-Program-Apm.java-&-Generate-the-C/C++-Header-File)
   - [WebRTC JNI APM Wrapper](#webRTC-JNI-APM-Wrapper)
   - [Android Make file](#android-make-file)
-  - [Build Shared Library via Android NDK](#build-the-shared library-via-android-NDK)
+  - [Build Shared Library via Android NDK](#build-shared library-via-android-NDK)
   - [Run with gradle](#run-with-gradle)
 
 
