@@ -9,9 +9,24 @@ For *real-time Communication and AudioProcessing* in Android, I will recommend y
 
 - [Android_Realtime_Communication_Using_WebRTC](https://github.com/mail2chromium/Android_Realtime_Communication_Using_WebRTC)
 - [Android-Audio-Processing-Using-WebRTC](https://github.com/mail2chromium/Android-Audio-Processing-Using-WebRTC)
+------
+
+# Content of this Document 
+
+
+- [NDK (Native Development Kit)](#ndk)
+- [Why NDK?](#why-ndk?)
+- [What is JNI?](#what-is-JNI?)
+- [NDK and JNI Workaround:](#ndk-and-JNI-Workaround)
+- [Installation and Configurations](#installation-and-configurations)
+- [WebRTC with Android](#webRTC-with-Android)
+- [Stream Division of APM](#stream-Division-of-APM)
 
 ------
-# NDK:
+
+## NDK:
+
+------
 
 [NDK (Native Development Kit)](https://developer.android.com/ndk/guides) includes the following features such as;
 
@@ -22,7 +37,10 @@ For *real-time Communication and AudioProcessing* in Android, I will recommend y
 Here you can select & download the latest or lagecy NDK package for your development platform i.e. [NDK Download](https://developer.android.com/ndk/downloads)
 
 ------
-# Why NDK?
+
+## Why NDK?
+
+------
 
 NDk finds its best use to squeeze extra performance out to device, to achieve low latency or run computationally intensive applications on android platform. Here are some other reasons why we use NDK in our development;
 
@@ -32,7 +50,10 @@ NDk finds its best use to squeeze extra performance out to device, to achieve lo
 such as WebRTC, TarsosDSP, Ffmpeg, OpenCV, and a lot of other machine learning stuff etc. 
 
 ------
+
 # What is JNI?
+
+------
 
 [JNI (Java Native Interface)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/index.html) provides several APIs to implement the communication between Java and other languages (mainly `C/C++`). 
 
@@ -44,8 +65,10 @@ Drawback: There is one of the major side effect of JNI is, *The Program is no lo
 
 -----
 
- # NDK and JNI Workaround:
+ ## NDK and JNI Workaround:
  
+-----
+ 
 To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to compile corresponding local [static or shared libraries](https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries) that can be run for different mobile devices (`ARM, x86 ...`). In order to improve the sorting efficiency and use `C/C ++` in android, here are different steps for this process are: 
 
 1. SDK development (write java code, write code containing native keywords to start JNI)([Native Methods](http://journals.ecs.soton.ac.uk/java/tutorial/native/index.html)) .
@@ -60,15 +83,17 @@ To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to c
 
 -----
 
-# Installation and Configurations
+## Installation and Configurations
+
+-----
 
 Here we start with;
 
-1. Download Source Code:
+#### 1. Download Source Code:
 
 As we know that WebRTC implementation is done in `C/C++` languages. It needs to integrate with android application via Java Native Interface(JNI). WebRTC source available at [Github WebRTC Source Code](https://github.com/JumpingYang001/webrtc.git) as well as official WebRTC [download page](http://webrtc.github.io/webrtc-org/native-code/development/).
 
-2. Setup Android NDK:
+##### 2. Setup Android NDK:
 
 To integrate WebRTC code via JNI, first I needs setup android NDK. Download NDK from [here](https://developer.android.com/ndk/downloads) and extract it. Main thing to consider here is, make sure NDK path is being setup in environment variables in windows i.e. [see](https://subscription.packtpub.com/book/application_development/9781849691505/1/ch01lvl1sec09/setting-up-an-android-ndk-development-environment-in-windows). 
 
@@ -86,13 +111,17 @@ I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/
 
 -----
 
-# WebRTC with Android:
+## WebRTC with Android:
 
 Following are the steps that I have followed to integrate WebRTC source code with my android application. 
 
-1. [Creating an Android Project](https://developer.android.com/training/basics/firstapp/creating-project)
+##### 1. [Creating an Android Project](https://developer.android.com/training/basics/firstapp/creating-project)
 
-2. Importing WebRTC Source to Android Project:
+-----
+
+##### 2. Importing WebRTC Source to Android Project:
+
+-----
 
 I have a seperated directory called `webrtc` inside the jni directory and added WebRTC source code for it. WebRTC source code can be cloned from [github](https://github.com/JumpingYang001/webrtc.git) or download via official [download page](http://webrtc.github.io/webrtc-org/native-code/development/).
 
@@ -102,7 +131,9 @@ Make sure your project structure follow the same hierarchy as given above.
 
 -----
 
-3. Write a Java class that uses native code of `C/C++`:
+##### 3. Write a Java class that uses native code of `C/C++`:
+
+------
 
 To call JNI based C function I need to write JNI wrappers for them. I kept the written wrappers in com_webrtc_audioprocessing_Apm_ package. Read more about JNI from [here](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html).
 Following is the JNI wrapper for WebRTC Audio processing. I have maintained and updated `Apm.java` in my Android Project as given here;
@@ -159,7 +190,9 @@ The static initializer invokes `System.loadLibrary()` to load the native library
 
 -----
 
-4. Compile the Java Program Apm.java & Generate the C/C++ Header File:
+##### 4. Compile the Java Program Apm.java & Generate the C/C++ Header File:
+
+-----
 
 Starting from JDK 8, you should use "javac -h" to compile the Java program AND generate C/C++ header file called `com_webrtc_audioprocessing_Apm.h` as follows:
 
@@ -180,7 +213,9 @@ Now place this header file (`com_webrtc_audioprocessing_Apm.h`) inside the follo
 
 -----
 
-5. WebRTC JNI Apm
+##### 5. WebRTC JNI Apm
+
+-----
 
 By using those generated library files and header files I have written JNI based C functions to **preprocess and postprocess** the audio data. These JNI files prefixed with `com_webrtc_audioprocessing_Apm` which is the java package path of the JNI wrappers.
 
@@ -190,7 +225,9 @@ Here is the JNI based audio processing module which is [android_apm_wrapper.cpp]
 
 ------
 
-6. Android make file
+##### 6. Android make file
+
+------
 
 I need to build a native shared library (`.so`) with my JNI C/C++ functions in order to call them from JAVA(with JNI wrapper). To do that I have written android make file `Android.mk`. Since my C/C++ functions using WebRTC library files, I have integrated them with the make file as well.
 Following is the make file to build shared library `Android.mk`;
@@ -270,7 +307,9 @@ include $(BUILD_SHARED_LIBRARY)
 
 ----
 
-7. Build the shared library via android NDK
+##### 7. Build the shared library via android NDK
+
+----
 
 Now I can build the shared library via android NDK. To build the shared library, follow these steps;
 
@@ -309,8 +348,9 @@ Now everything is ready for *WebRTC APM Module* to pre-process and post-process 
 
 ----
 
-8. Run with gradle
+##### 8. Run with gradle 
 
+----
 
 Now I have integrated WbeRTC APM with my application. I can run it with gradle(in android studio). To run it with gradle I need to manually define the JNI library directory in build.gradle file
 
