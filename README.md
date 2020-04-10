@@ -3,7 +3,7 @@
 
 **Getting Started**
 ------
-This repository involves a **Step by Step Guide to Build Android App based on WebRTC Native Stack.** As we all know, Android Programs run into Dalvik Virtual Machine. Native Development tool (NDK) allows users to execute some of the program using native code languages such as `C/C++`.
+This repository involves a **[Step by Step Guide to Build Android App based on WebRTC Native Stack](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC).** As we all know, Android Programs run into Dalvik Virtual Machine. Native Development tool (NDK) allows users to execute some of the program using native code languages such as `C/C++`.
 
 For *real-time Communication and AudioProcessing* in Android, I will recommend you to must visit these refernces:
 
