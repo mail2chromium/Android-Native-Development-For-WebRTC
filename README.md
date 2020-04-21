@@ -1,8 +1,11 @@
 # "WebRTC Native Stack is considered as a single chain as close to the Hardware Abstraction Layer (HAL) as possible."
 
+-----
 
 **Getting Started**
+
 ------
+
 This repository involves a **[Step by Step Guide to Build Android App based on WebRTC Native Stack](https://github.com/mail2chromium/Android-Native-Development-For-WebRTC).** As we all know, Android Programs run into Dalvik Virtual Machine. Native Development tool (NDK) allows users to execute some of the program using native code languages such as `C/C++`.
 
 For *Compilation and Building the WebRTC Library for Android*, you should have to look into this refernce:
@@ -14,10 +17,12 @@ For *real-time Communication and AudioProcessing* in Android, I will recommend y
 
 - [Android_Realtime_Communication_Using_WebRTC](https://github.com/mail2chromium/Android_Realtime_Communication_Using_WebRTC)
 - [Android-Audio-Processing-Using-WebRTC](https://github.com/mail2chromium/Android-Audio-Processing-Using-WebRTC)
+
 ------
 
-# Content of this Document 
+### Content of this Document 
 
+-----
 
 - [NDK (Native Development Kit)](#ndk)
 - [Why NDK?](#why-ndk)
@@ -37,7 +42,7 @@ For *real-time Communication and AudioProcessing* in Android, I will recommend y
 
 ------
 
-## NDK:
+### NDK:
 
 ------
 
@@ -51,7 +56,7 @@ Here you can select & download the latest or lagecy NDK package for your develop
 
 ------
 
-## Why NDK?
+### Why NDK?
 
 ------
 
@@ -64,7 +69,7 @@ such as WebRTC, TarsosDSP, Ffmpeg, OpenCV, and a lot of other machine learning s
 
 ------
 
-# What is JNI?
+### What is JNI?
 
 ------
 
@@ -78,7 +83,7 @@ Drawback: There is one of the major side effect of JNI is, *The Program is no lo
 
 -----
 
- ## NDK and JNI Workaround:
+ ### NDK and JNI Workaround:
  
 -----
  
@@ -96,7 +101,7 @@ To put it simply, NDK is an extension toolkit developed by JNI. It uses NDK to c
 
 -----
 
-## Installation and Configurations
+### Installation and Configurations
 
 -----
 
@@ -124,7 +129,9 @@ I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/
 
 -----
 
-## WebRTC with Android:
+### WebRTC with Android:
+
+------
 
 Following are the steps that I have followed to integrate WebRTC source code with my android application. 
 
