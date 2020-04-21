@@ -25,19 +25,32 @@ For *real-time Communication and AudioProcessing* in Android, I will recommend y
 -----
 
 - [NDK (Native Development Kit)](#ndk)
+
 - [Why NDK?](#why-ndk)
+
 - [What is JNI?](#what-is-JNI)
+
 - [NDK and JNI Workaround](#ndk-and-JNI-Workaround)
+
 - [Installation and Configurations](#installation-and-configurations)
+
 - [WebRTC with Android](#webRTC-with-Android)
-  - [Creating an Android Project](#creating-an-Android-Project)
-  - [Importing WebRTC Source to Android Project](#importing-WebRTC-Source-to-Android-Project)
-  - [Write a Java class that uses native code of C/C++](#write-a-Java-class-that-uses-native-code-of-C/C++)
-  - [Compile the Java Program Apm.java & Generate the C/C++ Header File](#compile-the-Java-Program-Apm.java-&-Generate-the-C/C++-Header-File)
-  - [WebRTC JNI APM Wrapper](#webRTC-JNI-APM-Wrapper)
-  - [Android Make file](#android-make-file)
-  - [Build Shared Library via Android NDK](#build-Shared-Library-via-Android-NDK)
-  - [Run with gradle](#run-with-gradle)
+
+    - [Creating an Android Project](#creating-an-Android-Project)
+
+    - [Importing WebRTC Source to Android Project](#importing-WebRTC-Source-to-Android-Project)
+
+    - [Write a Java class that uses native code of C/C++](#write-a-Java-class-that-uses-native-code-of-C/C++)
+
+    - [Compile the Java Program Apm.java & Generate the C/C++ Header File](#compile-the-Java-Program-Apm.java-&-Generate-the-C/C++-Header-File)
+
+    - [WebRTC JNI APM Wrapper](#webRTC-JNI-APM-Wrapper)
+
+    - [Android Make file](#android-make-file)
+
+    - [Build Shared Library via Android NDK](#build-Shared-Library-via-Android-NDK)
+
+    - [Run with gradle](#run-with-gradle)
 
 
 ------
