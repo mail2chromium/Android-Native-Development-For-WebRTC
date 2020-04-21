@@ -148,9 +148,9 @@ I must recommend you to follow this tutorial i.e [Hello-JNI](https://github.com/
 
 Following are the steps that I have followed to integrate WebRTC source code with my android application. 
 
-#### 1. [Creating an Android Project](https://developer.android.com/training/basics/firstapp/creating-project)
+#### 1- [Creating an Android Project](https://developer.android.com/training/basics/firstapp/creating-project)
 
-#### 2. Importing WebRTC Source to Android Project:
+#### 2- Importing WebRTC Source to Android Project:
 
 I have a seperated directory called `webrtc` inside the jni directory and added WebRTC source code for it. WebRTC source code can be cloned from [github](https://github.com/JumpingYang001/webrtc.git) or download via official [download page](http://webrtc.github.io/webrtc-org/native-code/development/).
 
@@ -160,7 +160,7 @@ Make sure your project structure follow the same hierarchy as given above.
 
 -----
 
-#### 3. Write a Java class that uses native code of `C/C++`:
+#### 3- Write a Java class that uses native code of `C/C++`:
 
 ------
 
@@ -219,7 +219,7 @@ The static initializer invokes `System.loadLibrary()` to load the native library
 
 -----
 
-#### 4. Compile the Java Program Apm.java & Generate the C/C++ Header File:
+#### 4- Compile the Java Program Apm.java & Generate the C/C++ Header File:
 
 -----
 
@@ -242,7 +242,7 @@ Now place this header file (`com_webrtc_audioprocessing_Apm.h`) inside the follo
 
 -----
 
-#### 5. WebRTC JNI APM Wrapper
+#### 5- WebRTC JNI APM Wrapper
 
 -----
 
@@ -254,7 +254,7 @@ Here is the JNI based audio processing module which is [android_apm_wrapper.cpp]
 
 ------
 
-#### 6. Android Make File
+#### 6- Android Make File
 
 ------
 
@@ -336,7 +336,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 ----
 
-#### 7. Build Shared Library via Android NDK
+#### 7- Build Shared Library via Android NDK
 
 ----
 
@@ -377,7 +377,7 @@ Now everything is ready for *WebRTC APM Module* to pre-process and post-process 
 
 ----
 
-#### 8. Run with gradle 
+#### 8- Run with gradle 
 
 ----
 
